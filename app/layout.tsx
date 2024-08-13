@@ -3,8 +3,10 @@ import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 
 import { cn } from "@/lib/utils";
-import DashboardPage from "./page";
 import { ThemeProvider } from "@/components/theme-provider";
+
+// Importing the page component should be done where necessary, not directly in the layout
+// You can use a layout component or a page component as needed
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -35,7 +37,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <DashboardPage></DashboardPage>
+          {children} {/* Render children here instead of DashboardPage */}
         </ThemeProvider>
       </body>
     </html>
