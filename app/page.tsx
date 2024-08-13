@@ -10,7 +10,7 @@ export default function Home() {
   useEffect(() => {
     const fetchUsername = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/user', {
+        const response = await axios.get('https://orbit.tf/api/user', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`, // Adjust as needed
           },
