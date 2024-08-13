@@ -16,7 +16,7 @@ export default function Login() {
     setLoading(true);
     setError('');
     try {
-      const { data } = await axios.post('https://orbit.tf/api/login', { email, password });
+      const { data } = await axios.post('https://api.orbit.tf/api/login', { email, password });
       localStorage.setItem('token', data.token); // Consider using cookies for better security
       router.push('/');
     } catch (error: any) {

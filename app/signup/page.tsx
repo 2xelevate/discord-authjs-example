@@ -13,7 +13,7 @@ export default function Signup() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('https://orbit.tf/api/signup', { email, password, username });
+      const { data } = await axios.post('https://api.orbit.tf/api/signup', { email, password, username });
       localStorage.setItem('token', data.token);
       router.push('/');
     } catch (error) {
