@@ -16,16 +16,19 @@ export default function Login() {
     setLoading(true);
     setError('');
     try {
-      const { data } = await axios.post('https://api.orbit.tf/api/login', { email, password });
-      localStorage.setItem('token', data.token); // Consider using cookies for better security
-      router.push('/');
+        const { data } = await axios.post('https://api.orbit.tf/api/login', 
+            { email, password }, 
+            { withCredentials: true } // Send cookies with the request
+        );
+        router.push('/');
     } catch (error: any) {
-      setError('Error logging in. Please check your credentials and try again.');
-      console.error('Error logging in', error);
+        setError('Error logging in. Please check your credentials and try again.');
+        console.error('Error logging in', error);
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
-  };
+};
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
