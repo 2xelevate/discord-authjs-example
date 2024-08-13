@@ -16,7 +16,7 @@ export default function Login() {
     setLoading(true);
     setError('');
     try {
-      const { data } = await axios.post('http://localhost:3001/api/login', { email, password });
+      const { data } = await axios.post('http://52.146.91.12:3001/api/login', { email, password });
       localStorage.setItem('token', data.token); // Consider using cookies for better security
       router.push('/');
     } catch (error: any) {
@@ -85,7 +85,7 @@ export default function Login() {
           </div>
         </form>
         <div className="text-sm text-center">
-          Don't have an account?
+          Don&apos;t have an account? {/* Correctly escaped single quote */}
           <a href="/signup" className="font-medium text-primary hover:text-primary-foreground">
             Sign Up
           </a>
