@@ -85,7 +85,7 @@ export default function Login() {
           </div>
         </form>
         <div className="text-sm text-center">
-          Don't have an account?{' '}
+          Don't have an account?
           <a href="/signup" className="font-medium text-primary hover:text-primary-foreground">
             Sign Up
           </a>
