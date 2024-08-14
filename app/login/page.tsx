@@ -12,22 +12,25 @@ export default function Login() {
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-    try {
-        const { data } = await axios.post('https://api.orbit.tf/api/login', 
-            { email, password }, 
-            { withCredentials: true } // Send cookies with the request
-        );
-        router.push('/');
-    } catch (error: any) {
-        setError('Error logging in. Please check your credentials and try again.');
-        console.error('Error logging in', error);
-    } finally {
-        setLoading(false);
-    }
-};
+      e.preventDefault();
+      setLoading(true);
+      setError('');
+
+      try {
+          const response = await axios.post(
+              'https://api.orbit.tf/api/login',
+              { email, password },
+              { withCredentials: true } // Ensure cookies are sent with the request
+          );
+          localStorage.setItem('token', response.data.token); // Store token in local storage
+          router.push('/'); // Redirect to homepage or dashboard
+      } catch (error: any) {
+          setError('Error logging in. Please check your credentials and try again.');
+          console.error('Login error:', error);
+      } finally {
+          setLoading(false);
+      }
+  };
 
 
   return (
