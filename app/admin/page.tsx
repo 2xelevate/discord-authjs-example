@@ -29,9 +29,6 @@ export default function Admin() {
         fetchUsers();
     }, []);
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div className="text-red-500">{error}</div>;
-
     async function handleResetPassword(userId: number) {
         try {
             const newPassword = prompt('Enter new password:');
@@ -62,6 +59,21 @@ export default function Admin() {
         }
     }
 
+    async function handleAssignRole(userId: number) {
+        try {
+            const roleName = prompt('Enter the role name to assign:');
+            if (roleName) {
+                await axios.post('https://api.orbit.tf/api/assign-role', { userId, roleName }, {
+                    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+                });
+                alert('Role assigned successfully');
+            }
+        } catch (error: any) {
+            console.error('Error assigning role', error);
+            alert('Error assigning role');
+        }
+    }
+
     return (
         <div className="flex h-screen bg-background">
             <Sidebar />
@@ -69,11 +81,18 @@ export default function Admin() {
                 <Topbar />
                 <main className="flex-1 p-8">
                     <h1 className="text-3xl font-bold mb-6">User Management</h1>
-                    <UserTable 
-                        users={users} 
-                        onResetPassword={handleResetPassword} 
-                        onChangeUsername={handleChangeUsername} 
-                    />
+                    {loading ? (
+                        <div>Loading...</div>
+                    ) : error ? (
+                        <div className="text-red-500">{error}</div>
+                    ) : (
+                        <UserTable 
+                            users={users} 
+                            onResetPassword={handleResetPassword} 
+                            onChangeUsername={handleChangeUsername} 
+                            onAssignRole={handleAssignRole} // Add role assignment to the UserTable component
+                        />
+                    )}
                 </main>
             </div>
         </div>
