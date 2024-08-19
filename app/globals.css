@@ -31,7 +31,7 @@
     --border: 0 0% 20%; /* Very dark gray */
     --input: 0 0% 20%; /* Very dark gray */
     --ring: 0 0% 30%; /* Dark gray */
-    
+
     --radius: 0.5rem;
   }
 
@@ -64,13 +64,23 @@
     --input: 0 0% 20%; /* Very dark gray */
     --ring: 0 0% 30%; /* Dark gray */
   }
-}
 
-@layer base {
+  body {
+    @apply bg-background text-foreground min-h-screen;
+    margin: 0; /* Ensure no default body margin */
+  }
+
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground;
+
+  .ant-message {
+    background-color: #1a1a1a; /* Black background */
+    color: white; /* White text color */
+  }
+  
+  .ant-message .ant-message-custom-content {
+    background-color: #1a1a1a; /* Ensure background color is applied to custom content */
+    color: white; /* Ensure text color is applied to custom content */
   }
 }

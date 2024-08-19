@@ -1,0 +1,69 @@
+.notification-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+  
+  .notification {
+    display: flex;
+    align-items: center;
+    background-color: #1a1a1a; /* Black background */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    height: 50px; /* Set height for the notification */
+    opacity: 0; /* Initial opacity for fade-in effect */
+    animation: fadeIn 0.5s forwards; /* Fade-in animation */
+  }
+  
+  .icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e53e3e; /* Red background for the icon */
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+  
+  .error-icon {
+    width: 16px;
+    height: 16px;
+    color: white;
+  }
+  
+  .message {
+    flex: 1;
+    font-size: 14px;
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+  }
+  
+  .close-icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
